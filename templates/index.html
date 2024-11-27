@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>ImageSpot</title>
+</head>
+<body>
+    <header>
+        <h1>ImageSpot</h1>
+        <p>Encuentra imágenes hermosas de Unsplash</p>
+    </header>
+    <main>
+        <form action="/search" method="post">
+            <input type="text" name="query" placeholder="Buscar imágenes...">
+            <button type="submit">Buscar</button>
+        </form>
+
+        {% if images %}
+            <section>
+                <h2>Resultados para: "{{ query }}"</h2>
+                <div class="image-grid">
+                    {% for image in images %}
+                        <img src="{{ image }}" alt="Imagen">
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+    </main>
+</body>
+</html>
+
